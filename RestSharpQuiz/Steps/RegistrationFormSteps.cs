@@ -4,6 +4,7 @@ using TechTalk.SpecFlow;
 namespace RestSharpQuiz.Steps
 {
     [Binding]
+    [Scope(Feature = "Registration form")]
     public class RegistrationFormSteps
     {
         [Given(@"User filled data correctly")]
