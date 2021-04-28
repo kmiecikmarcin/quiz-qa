@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using RestSharp;
+using RestSharpQuiz.Models;
+using System;
 using TechTalk.SpecFlow;
 
 namespace RestSharpQuiz.Steps
@@ -7,6 +10,11 @@ namespace RestSharpQuiz.Steps
     [Scope(Feature = "Registration form")]
     public class RegistrationFormSteps
     {
+        RestClient restClient;
+        RestRequest restRequest;
+        RestResponse restResponse;
+        User user;
+
         [Given(@"User filled data correctly")]
         public void GivenUserFilledDataCorrectly()
         {
@@ -112,7 +120,7 @@ namespace RestSharpQuiz.Steps
         [When(@"Request sends to API")]
         public void WhenRequestSendsToAPI()
         {
-            
+            restRequest.AddParameter("application/json", JsonConvert.SerializeObject(user), ParameterType.RequestBody);
         }
         
         [Then(@"The server should return positive status 200")]
