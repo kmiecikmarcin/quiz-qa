@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using NUnit.Framework;
 using RestSharp;
 using RestSharpQuiz.Models;
 using System;
@@ -10,15 +11,16 @@ namespace RestSharpQuiz.Steps
     [Scope(Feature = "Registration form")]
     public class RegistrationFormSteps
     {
-        RestClient restClient;
-        RestRequest restRequest;
+        RestClient restClient = new RestClient();
+        RestRequest restRequest = new RestRequest("http://localhost:3000/quiz/users/register", Method.POST);
         RestResponse restResponse;
         User user;
 
         [Given(@"User filled data correctly")]
         public void GivenUserFilledDataCorrectly()
         {
-            
+            user = new User("", "", "", "", false);
+            user.CreateUser(user);
         }
 
         [Given(@"User didn't fill data")]
@@ -126,7 +128,8 @@ namespace RestSharpQuiz.Steps
         [Then(@"The server should return positive status 200")]
         public void ThenTheServerShouldReturnPositiveStatus()
         {
-            
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+            Assert.AreEqual(201, (int)restResponse.StatusCode);
         }
         
         [Then(@"Response with message about successfully process")]

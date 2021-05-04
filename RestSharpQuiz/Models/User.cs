@@ -27,17 +27,40 @@ namespace RestSharpQuiz.Models
         {
             Random rand = new Random();
 
-            user_email = $"userLogin{rand.Next(0, 10000)}";
+            user_email = $"exampleEmail{rand.Next(0, 10000)}@email.com";
 
             return user_email;
         }
+        public string GeneratePassword()
+        {
+            Random rand = new Random();
 
+            user_password = $"userPassword{rand.Next(0, 100)}@";
+
+            return user_password;
+        }
+        public string GenerateGender()
+        {
+            Random rand = new Random();
+            string[] arrayofGender = { "Mężczyzna", "Kobieta", "Inna" };
+            int randomNumber = rand.Next(0, 2);
+
+            return user_gender = arrayofGender[randomNumber];
+        }
         public User CreateUser(User user)
         {
-            if(user.user_email == null)
-            {
+            if(user.user_email.Length == 0)
                 user.user_email = GenerateEmail();
-            }
+            if (user.user_password.Length == 0)
+                user.user_password = GeneratePassword();
+            if (user.confirm_password.Length == 0)
+                user.confirm_password = user_password;
+            if (user.user_gender.Length == 0)
+                user.user_gender = GenerateGender();
+            if (user.user_verification == false)
+                user.user_verification = true;
+
+            user = new User(user_email, user_password, confirm_password, user_gender, user_verification);
 
             return user;
         }

@@ -10,21 +10,22 @@ namespace RestSharpQuiz.Models
     {
         public ValidationResponse validationResponse { get; set; }
 
-    public class ValidationResponse
-    {
-        public string value { get; set; }
-        public string msg { get; set; }
-        public string param { get; set; }
-        public string location { get; set; }
-    }
+        public class ValidationResponse
+        {
+            public string value { get; set; }
+            public string msg { get; set; }
+            public string param { get; set; }
+            public string location { get; set; }
+        }
 
-    public class ResponseMessage
-    {
-        public string Message { get; set; }
-    }
+        public class ResponseMessage
+        {
+            public string Message { get; set; }
+        }
 
-    public class ResponseError
-    {
-        public string Error { get; set; }
+        public class ResponseError
+        {
+            public string Error { get; set; }
+        }
     }
 }
