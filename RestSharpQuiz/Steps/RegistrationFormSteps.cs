@@ -15,6 +15,7 @@ namespace RestSharpQuiz.Steps
         RestRequest restRequest = new RestRequest("http://localhost:3000/quiz/users/register", Method.POST);
         RestResponse restResponse;
         User user;
+        Response response;
 
         [Given(@"User filled data correctly")]
         public void GivenUserFilledDataCorrectly()
@@ -26,13 +27,14 @@ namespace RestSharpQuiz.Steps
         [Given(@"User didn't fill data")]
         public void GivenUserDidnTFillData()
         {
-            
+            user = new User("", "", "", "", false);
         }
 
         [Given(@"Users filled data with incorrect Adres email")]
         public void GivenUsersFilledDataWithIncorrectAdresEmail()
         {
-            
+            user = new User("useremail.com", "", "", "", false);
+            user.CreateUser(user);
         }
 
         [Given(@"Users filled data with incorrect Hasło")]
@@ -135,25 +137,29 @@ namespace RestSharpQuiz.Steps
         [Then(@"Response with message about successfully process")]
         public void ThenResponseWithMessageAboutSuccessfullyProcess()
         {
-            
+            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(response.messages.message, Is.EqualTo("Rejestracja przebiegła pomyślnie!"));
         }
 
         [Then(@"The server should return status 400")]
         public void ThenTheServerShouldReturnStatus()
         {
-            
+            restResponse = (RestResponse)restClient.Execute(restRequest);
+            Assert.AreEqual(400, (int)restResponse.StatusCode);
         }
 
         [Then(@"Response with error about missing data")]
         public void ThenResponseWithErrorAboutMissingData()
         {
-            
+            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(response.validationErrors, Is.Not.Null);
         }
 
         [Then(@"Response with error about incorrect Adres email")]
         public void ThenResponseWithErrorAboutIncorrectAdresEmail()
         {
-            
+            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            Assert.That(response.validationErrors[0].user_email, Is.EqualTo("Adres e-mail został wprowadzony niepoprawnie!"));
         }
 
         [Then(@"Response with error about incorrect Hasło")]
