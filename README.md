@@ -1,5 +1,5 @@
-## Learn&Check
-RestSharp tests for [Learn&Check](https://learnandtest.herokuapp.com/api-docs) API.
+## School quiz
+RestSharp tests for [School quiz](https://learnandtest.herokuapp.com/api-docs) API.
 
 BDD scenarios built with [Gherkin](https://cucumber.io/docs/gherkin/).
 
