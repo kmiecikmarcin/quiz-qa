@@ -12,9 +12,9 @@ namespace RestSharpQuiz.Models
         public string user_password { get; set; }
         public string confirm_password { get; set; }
         public string user_gender { get; set; }
-        public bool user_verification { get; set; }
+        public Nullable<bool> user_verification { get; set; }
 
-        public User(string user_email, string user_password, string confirm_password, string user_gender, bool user_verification)
+        public User(string user_email, string user_password, string confirm_password, string user_gender, Nullable<bool> user_verification)
         {
             this.user_email = user_email;
             this.user_password = user_password;
@@ -49,13 +49,13 @@ namespace RestSharpQuiz.Models
         }
         public User CreateUser(User user)
         {
-            if(user.user_email.Length == 0)
+            if(user.user_email == null)
                 user.user_email = GenerateEmail();
-            if (user.user_password.Length == 0)
+            if (user.user_password == null)
                 user.user_password = GeneratePassword();
-            if (user.confirm_password.Length == 0)
+            if (user.confirm_password == null)
                 user.confirm_password = user_password;
-            if (user.user_gender.Length == 0)
+            if (user.user_gender == null)
                 user.user_gender = GenerateGender();
             if (user.user_verification == false)
                 user.user_verification = true;

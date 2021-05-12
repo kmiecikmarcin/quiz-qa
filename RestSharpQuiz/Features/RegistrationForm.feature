@@ -47,7 +47,6 @@ Scenario Outline: REGISTRATION_FORM_[/quiz/users/register]_[POST]_5_send_request
 
 Examples: 
 	| field       |
-	| Adres email |
 	| Hasło       |
 	| Płeć        |
 
