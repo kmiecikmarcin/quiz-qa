@@ -265,7 +265,6 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("REGISTRATION_FORM_[/quiz/users/register]_[POST]_5_send_request_with_data_which_is" +
             "_too_short")]
-        [NUnit.Framework.TestCaseAttribute("Adres email", null)]
         [NUnit.Framework.TestCaseAttribute("Hasło", null)]
         [NUnit.Framework.TestCaseAttribute("Płeć", null)]
         public virtual void REGISTRATION_FORM_QuizUsersRegister_POST_5_Send_Request_With_Data_Which_Is_Too_Short(string field, string[] exampleTags)
@@ -324,7 +323,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("field", field);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("REGISTRATION_FORM_[/quiz/users/register]_[POST]_6_send_request_with_data_which_is" +
                     "_too_long", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 54
+#line 53
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -344,16 +343,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 55
+#line 54
  testRunner.Given(string.Format("User filled too long {0}", field), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 56
+#line 55
  testRunner.When("Request sends to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 57
+#line 56
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 58
+#line 57
  testRunner.And(string.Format("Response with error about too long {0}", field), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
