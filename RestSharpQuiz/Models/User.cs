@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RestSharpQuiz.Models
 {
@@ -31,6 +27,7 @@ namespace RestSharpQuiz.Models
 
             return user_email;
         }
+
         public string GeneratePassword()
         {
             Random rand = new Random();
@@ -39,6 +36,7 @@ namespace RestSharpQuiz.Models
 
             return user_password;
         }
+
         public string GenerateGender()
         {
             Random rand = new Random();
@@ -47,9 +45,10 @@ namespace RestSharpQuiz.Models
 
             return user_gender = arrayofGender[randomNumber];
         }
+
         public User CreateUser(User user)
         {
-            if(user.user_email == null)
+            if (user.user_email == null)
                 user.user_email = GenerateEmail();
             if (user.user_password == null)
                 user.user_password = GeneratePassword();

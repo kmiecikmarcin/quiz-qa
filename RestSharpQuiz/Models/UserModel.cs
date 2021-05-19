@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace RestSharpQuiz.Models
 {
@@ -11,10 +7,14 @@ namespace RestSharpQuiz.Models
         public Message messages { get; set; }
         public List<ValidationErrors> validationErrors { get; set; }
     }
+
     public class Message
     {
         public string message { get; set; }
+        public string error { get; set; }
+        public string token { get; set; }
     }
+
     public class ValidationErrors
     {
         public string user_email { get; set; }
