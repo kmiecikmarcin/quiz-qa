@@ -42,8 +42,8 @@ Scenario Outline: CHANGE_OF_USER_EMAIL_5_[/quiz/users/email]_[PUT]_send_request_
 	And Response with message about incorrect password
 
 	Examples: 
-		| type of mistake     | data                                    |
-		| which is too short  | short                                   |
-		| which is too long   | userEnteredTooLongPassword@WhichIsWrong |
-		| without data        |                                         |
-		| without special key | password                                |
+		| type of mistake      | data                                    |
+		| which is too short   | short                                   |
+		| which is too long    | userEnteredTooLongPassword@WhichIsWrong |
+		| without data         |                                         |
+		| without special key  | password                                |                                                                                                                                                                                                                            |
