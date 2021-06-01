@@ -3,19 +3,19 @@
 Background: 
 	Given Given User registers in system
 
-Scenario: LOGIN_MODULE_[quiz/users/login]_1_send request_with_correctly_data
+Scenario: LOGIN_MODULE_[/quiz/users/login]_1_send request_with_correctly_data
 	Given User filled email and password correctly
 	When Request sends to API
 	Then The server should return status 200 
 	And Response should return token
 
-Scenario: LOGIN_MODULE_[quiz/users/login]_2_send request_with_empty_data
+Scenario: LOGIN_MODULE_[/quiz/users/login]_2_send request_with_empty_data
 	Given User didn't fill email and password
 	When Request sends to API 
 	Then The server should return status 400
 	And Response with error about missing data
 
-Scenario Outline: LOGIN_MODULE_[quiz/users/login]_3_send_request_with_incorrect_<field>
+Scenario Outline: LOGIN_MODULE_[/quiz/users/login]_3_send_request_with_incorrect_<field>
 	Given User fills incorrect <field>
 	When Request sends to API 
 	Then The server should return status 400
