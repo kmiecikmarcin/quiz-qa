@@ -7,6 +7,7 @@ using TechTalk.SpecFlow;
 namespace RestSharpQuiz.Steps
 {
     [Binding]
+    [Scope(Feature = "Login module")]
     public class LoginModuleSteps
     {
         private RestClient _restClinet;
