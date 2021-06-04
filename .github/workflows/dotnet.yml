@@ -19,14 +19,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+        files: 'quizHeroku.config'
         
     - name: Restore dependencies
       run: dotnet restore
-      
-    - name: App Settings Variable Substitution
-      uses: microsoft/variable-substitution@v1
-      with:
-        files: ./RestSharpQuiz/quizHeroku.config
       
     - name: Build
       run: dotnet build --no-restore
