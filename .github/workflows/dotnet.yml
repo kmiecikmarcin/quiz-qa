@@ -11,7 +11,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -23,6 +23,11 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
       
+    - name: Read config file
+      uses: juliangruber/read-file-action@v1
+      with:
+        path: ./RestSharpQuiz/quizHeroku.config
+        
     - name: Build
       run: dotnet build --no-restore
       working-directory: ./RestSharpQuiz
