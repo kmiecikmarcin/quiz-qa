@@ -33,7 +33,7 @@ Examples:
 | without @            | exmapleEmail.com                                                                                                                                                                                                                                                        |
 | which is too long    | xv5XfZ1LXURRkaFvIEvzp7j8Fuj16dziBW9Pv8quGJsdQfOnyKV6hosAlndp2Au244iHlJeHIaQHx2rqzcpyiwjqDywrzFz6CgCvUVVVngr2IkTfDQBsB88llpJYJWY2xbOdvLIBXQ2QOM65PlCBp0TTVQX0lBvFLIAZg7kZNM2hQIN3bpvQ2GaacERotQuF3JPwlvUUr84B9h81Y4z0MmP1hrz1bDaoAzlU5jJx3ft9dCJLXUMUgig4rDDOv@email.com |
 | without data after @ | exmapleEmail@                                                                                                                                                                                                                                                           |
-| without data         |                                                                                                                                                                                                                                                                         |
+| without data         | empty                                                                                                                                                                                                                                                                   |
 
 Scenario Outline: CHANGE_USER_EMAIL_5_[/quiz/users/email]_[PUT]_send_request_with_incorrect_password
 	Given User filled password '<type of mistake>' with '<data>'
@@ -45,6 +45,6 @@ Examples:
 | type of mistake       | data                                    |
 | which is too short    | short                                   |
 | which is too long     | userEnteredTooLongPassword@WhichIsWrong |
-| without data          |                                         |
+| without data          | empty                                   |
 | without special key   | password                                |
 | which is not a string | float                                   |                                                                                                                                                                                                                |
