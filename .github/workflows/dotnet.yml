@@ -23,8 +23,10 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
       
-    - name: Take url from config file
-      run: dotnet quizHeroku.config
+    - name: App Settings Variable Substitution
+      uses: microsoft/variable-substitution@v1
+      with:
+        files: 'quizHeroku.config'
       
     - name: Build
       run: dotnet build --no-restore
