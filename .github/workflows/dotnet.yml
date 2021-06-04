@@ -26,7 +26,7 @@ jobs:
     - name: App Settings Variable Substitution
       uses: microsoft/variable-substitution@v1
       with:
-        files: 'quizHeroku.config'
+        files: ./RestSharpQuiz/quizHeroku.config
       
     - name: Build
       run: dotnet build --no-restore
