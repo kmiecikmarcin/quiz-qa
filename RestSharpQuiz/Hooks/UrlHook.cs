@@ -1,5 +1,6 @@
 ﻿using BoDi;
 using RestSharp;
+using System.Configuration;
 using TechTalk.SpecFlow;
 
 namespace RestSharpQuiz.Hooks
@@ -9,12 +10,16 @@ namespace RestSharpQuiz.Hooks
     {
         public static RestClient restClient = new RestClient();
         public static IObjectContainer _objectContainer;
-        public string Url = "https://learnandtest.herokuapp.com/quiz";
+        public string envUrl = ConfigurationManager.AppSettings["basicEndpoint"];
 
         public UrlHook(IObjectContainer objectContainer)
         {
             _objectContainer = objectContainer;
-            restClient = new RestClient(Url);
+
+            if (string.IsNullOrEmpty(envUrl))
+                envUrl = "https://learnandtest.herokuapp.com/quiz";
+
+            restClient = new RestClient(envUrl);
         }
 
         [BeforeScenario]

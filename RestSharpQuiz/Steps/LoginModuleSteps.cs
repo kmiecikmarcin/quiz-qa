@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using RestSharp;
 using RestSharpQuiz.Models;
+using System.Configuration;
 using TechTalk.SpecFlow;
 
 namespace RestSharpQuiz.Steps
@@ -15,10 +16,11 @@ namespace RestSharpQuiz.Steps
         private RestResponse _restResponse;
         private User user;
         private Response response;
+        private string signInUrl = "/users/login";
 
         public LoginModuleSteps(RestClient restClinet)
         {
-            _restClinet = new RestClient(restClinet.BaseUrl + "/users/login");
+            _restClinet = new RestClient(restClinet.BaseUrl + signInUrl);
             _restRequest = new RestRequest(Method.POST);
             user = new User(null, null, null, null, false);
         }
