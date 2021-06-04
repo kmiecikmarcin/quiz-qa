@@ -1,4 +1,6 @@
 ## School quiz
+[![RestSharp Quiz CI](https://github.com/kmiecikmarcin/quiz-qa/actions/workflows/dotnet.yml/badge.svg)](https://github.com/kmiecikmarcin/quiz-qa/actions/workflows/dotnet.yml)
+
 RestSharp tests for [School quiz](https://learnandtest.herokuapp.com/api-docs) API.
 
 BDD scenarios built with [Gherkin](https://cucumber.io/docs/gherkin/).
