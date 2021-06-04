@@ -1,7 +1,7 @@
 ﻿using BoDi;
 using RestSharp;
-using System.Configuration;
 using TechTalk.SpecFlow;
+using NUnit.Framework;
 
 namespace RestSharpQuiz.Hooks
 {
@@ -10,10 +10,10 @@ namespace RestSharpQuiz.Hooks
     {
         public static RestClient restClient = new RestClient();
         public static IObjectContainer _objectContainer;
-        public string envUrl = ConfigurationManager.AppSettings["basicEndpoint"];
+        public string envUrl = TestContext.Parameters["entryEndpoint"];
 
         public UrlHook(IObjectContainer objectContainer)
-        {
+        {           
             _objectContainer = objectContainer;
 
             if (string.IsNullOrEmpty(envUrl))
