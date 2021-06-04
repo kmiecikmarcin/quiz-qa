@@ -47,4 +47,4 @@ Examples:
 | which is too long     | userEnteredTooLongPassword@WhichIsWrong |
 | without data          | empty                                   |
 | without special key   | password                                |
-| which is not a string | float                                   |                                                                                                                                                                                                                |
+| which is not a string | float                                   |
