@@ -17,7 +17,7 @@ namespace RestSharpQuiz.Hooks
             _objectContainer = objectContainer;
 
             if (string.IsNullOrEmpty(envUrl))
-                envUrl = "https://learnandtest.herokuapp.com/quiz";
+                envUrl = "https://localhost:3000/quiz";
 
             restClient = new RestClient(envUrl);
         }
