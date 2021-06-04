@@ -32,7 +32,7 @@ Scenario Outline: CHANGE_USER_PASSWORD_4_[/quiz/users/password]_[PUT]_send_reque
 		| type of mistake       | data                                    |
 		| which is too short    | short                                   |
 		| which is too long     | userEnteredTooLongPassword@WhichIsWrong |
-		| without data          |                                         |
+		| without data          | empty                                   |
 		| without special key   | password                                |
 		| which is not a string | int                                     |
 
@@ -53,6 +53,6 @@ Scenario Outline: CHANGE_OF_USER_PASSWORD_6_[/quiz/users/password]_[PUT]_send_re
 		| type of mistake       | data                                    |
 		| which is too short    | short                                   |
 		| which is too long     | userEnteredTooLongPassword@WhichIsWrong |
-		| without data          |                                         |
+		| without data          | empty                                   |
 		| without special key   | password                                |
 		| which is not a string | float                                   |
