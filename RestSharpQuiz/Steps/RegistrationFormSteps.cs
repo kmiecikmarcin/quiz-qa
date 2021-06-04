@@ -3,6 +3,7 @@ using NUnit.Framework;
 using RestSharp;
 using RestSharpQuiz.Models;
 using System;
+using System.Configuration;
 using TechTalk.SpecFlow;
 
 namespace RestSharpQuiz.Steps
@@ -11,11 +12,18 @@ namespace RestSharpQuiz.Steps
     [Scope(Feature = "Registration form")]
     public class RegistrationFormSteps
     {
-        RestClient restClient = new RestClient();
-        RestRequest restRequest = new RestRequest("https://learnandtest.herokuapp.com/quiz/users/register", Method.POST);
-        RestResponse restResponse;
+        RestClient _restClient;
+        RestRequest _restRequest;
+        RestResponse _restResponse;
         User user;
         Response response;
+        private string signUpUrl = "/users/register";
+
+        public RegistrationFormSteps(RestClient restClinet)
+        {
+            _restClient = new RestClient(restClinet.BaseUrl + signUpUrl);
+            _restRequest = new RestRequest(Method.POST);
+        }
 
         [Given(@"User filled data correctly")]
         public void GivenUserFilledDataCorrectly()
@@ -134,132 +142,132 @@ namespace RestSharpQuiz.Steps
         [When(@"Request sends to API")]
         public void WhenRequestSendsToAPI()
         {
-            restRequest.AddParameter("application/json", JsonConvert.SerializeObject(user), ParameterType.RequestBody);
+            _restRequest.AddParameter("application/json", JsonConvert.SerializeObject(user), ParameterType.RequestBody);
         }
         
         [Then(@"The server should return positive status 200")]
         public void ThenTheServerShouldReturnPositiveStatus()
         {
-            restResponse = (RestResponse)restClient.Execute(restRequest);
-            Assert.AreEqual(201, (int)restResponse.StatusCode);
+            _restResponse = (RestResponse)_restClient.Execute(_restRequest);
+            Assert.AreEqual(201, (int)_restResponse.StatusCode);
         }
         
         [Then(@"Response with message about successfully process")]
         public void ThenResponseWithMessageAboutSuccessfullyProcess()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.messages.message, Is.EqualTo("Rejestracja przebiegła pomyślnie!"));
         }
 
         [Then(@"The server should return status 400")]
         public void ThenTheServerShouldReturnStatus()
         {
-            restResponse = (RestResponse)restClient.Execute(restRequest);
-            Assert.AreEqual(400, (int)restResponse.StatusCode);
+            _restResponse = (RestResponse)_restClient.Execute(_restRequest);
+            Assert.AreEqual(400, (int)_restResponse.StatusCode);
         }
 
         [Then(@"Response with error about missing data")]
         public void ThenResponseWithErrorAboutMissingData()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors, Is.Not.Null);
         }
 
         [Then(@"Response with error about incorrect Adres email")]
         public void ThenResponseWithErrorAboutIncorrectAdresEmail()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors[0].user_email, Is.EqualTo("Adres e-mail został wprowadzony niepoprawnie!"));
         }
 
         [Then(@"Response with error about incorrect Hasło")]
         public void ThenResponseWithErrorAboutIncorrectHaslo()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors[0].user_password, Is.EqualTo("Hasło nie zawiera minimum jednego znaku specjalnego!"));
         }
 
         [Then(@"Response with error about incorrect Płeć")]
         public void ThenResponseWithErrorAboutIncorrectPlec()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors[0].user_gender, Is.EqualTo("Podano błędną wartość!"));
         }
 
         [Then(@"Response with error about incorrect Weryfikacja")]
         public void ThenResponseWithErrorAboutIncorrectWeryfikacja()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors[0].user_verification, Is.EqualTo("Wprowadzona wartość jest nieprawidłowa!"));
         }
 
         [Then(@"Response with error about empty Adres email")]
         public void ThenResponseWithErrorAboutEmptyAdresEmail()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors[0].user_email, Is.EqualTo("Adres e-mail został wprowadzony niepoprawnie!"));
         }
 
         [Then(@"Response with error about empty Hasło")]
         public void ThenResponseWithErrorAboutEmptyHaslo()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors[0].user_password, Is.EqualTo("Hasło jest za krótkie!"));
         }
 
         [Then(@"Response with error about empty Powtórz hasło")]
         public void ThenResponseWithErrorAboutEmptyPowtorzHaslo()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors[0].confirm_password, Is.EqualTo("Hasła sa różne!"));
         }
 
         [Then(@"Response with error about empty Płeć")]
         public void ThenResponseWithErrorAboutEmptyPlec()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors[0].user_gender, Is.EqualTo("Wprowadzone dane są za krótkie!"));
         }
 
         [Then(@"Response with error about empty Weryfikacja")]
         public void ThenResponseWithErrorAboutEmptyWeryfikacja()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors[0].user_verification, Is.EqualTo("Wprowadzona wartość jest nieprawidłowa!"));
         }
 
         [Then(@"Response with error about too short Hasło")]
         public void ThenResponseWithErrorAboutTooShortHaslo()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors[0].user_password, Is.EqualTo("Hasło jest za krótkie!"));
         }
 
         [Then(@"Response with error about too short Płeć")]
         public void ThenResponseWithErrorAboutTooShortPlec()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors[0].user_gender, Is.EqualTo("Podano błędną wartość!"));
         }
 
         [Then(@"Response with error about too long Adres email")]
         public void ThenResponseWithErrorAboutTooLongAdresEmail()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors[0].user_email, Is.EqualTo("Wprowadzony adres e-mail jest za długi!"));
         }
 
         [Then(@"Response with error about too long Hasło")]
         public void ThenResponseWithErrorAboutTooLongHaslo()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors[0].user_password, Is.EqualTo("Hasło jest za długie!"));
         }
 
         [Then(@"Response with error about too long Płeć")]
         public void ThenResponseWithErrorAboutTooLongPlec()
         {
-            response = JsonConvert.DeserializeObject<Response>(restResponse.Content);
+            response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationErrors[0].user_gender, Is.EqualTo("Wprowadzone dane sa za długie!"));
         }
     }
