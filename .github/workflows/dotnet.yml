@@ -23,9 +23,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
       
-    - name: Run runsettings file
-      run:  dotnet ./*RestSharpQuiz.dll -settings:quizHeroku.runsettings
-      
     - name: Build
       run: dotnet build --no-restore
       working-directory: ./RestSharpQuiz
