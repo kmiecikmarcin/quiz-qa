@@ -24,7 +24,7 @@ jobs:
       run: dotnet restore
       
     - name: Run runsettings file
-      run:  dotnet RestSharp.dll -settings:quizHeroku.runsettings
+      run:  dotnet RestSharpQuiz.dll -settings:quizHeroku.runsettings
       
     - name: Build
       run: dotnet build --no-restore
