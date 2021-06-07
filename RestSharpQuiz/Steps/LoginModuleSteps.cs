@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using RestSharp;
 using RestSharpQuiz.Models;
-using System.Configuration;
 using TechTalk.SpecFlow;
 
 namespace RestSharpQuiz.Steps
@@ -17,6 +16,7 @@ namespace RestSharpQuiz.Steps
         private User user;
         private Response response;
         private string signInUrl = "/users/login";
+        private string envUrl = TestContext.Parameters["entryEndpoint"];
 
         public LoginModuleSteps(RestClient restClinet)
         {
@@ -29,7 +29,11 @@ namespace RestSharpQuiz.Steps
         public void GivenGivenUserRegistersInSystem()
         {
             RestClient restClinet = new RestClient();
-            RestRequest restRequest = new RestRequest("https://learnandtest.herokuapp.com/quiz/users/register", Method.POST);
+
+            if (string.IsNullOrEmpty(envUrl))
+                envUrl = "https://localhost:3000/quiz";
+
+            RestRequest restRequest = new RestRequest(envUrl + "/users/register", Method.POST);
             user = user.CreateUser(user);
             restRequest.AddParameter("application/json", JsonConvert.SerializeObject(user), ParameterType.RequestBody);
             restClinet.Execute(restRequest);
