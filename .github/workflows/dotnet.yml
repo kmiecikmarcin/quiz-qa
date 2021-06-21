@@ -28,7 +28,7 @@ jobs:
       working-directory: ./RestSharpQuiz
       
     - name: Test
-      run: dotnet test --no-build --verbosity quiet --settings:quizHeroku.runsettings
+      run: dotnet test --no-build --verbosity normal --settings:quizHeroku.runsettings
 
     - name: Artifacts
       uses: actions/upload-artifact@v2
