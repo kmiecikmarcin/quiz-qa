@@ -35,4 +35,4 @@ jobs:
       with:
         project_path: ./RestSharpQuiz
         report_name: my_project_tests
-        report_title: My Project Tests
+        report_title: RestSharpQuiz Tests
