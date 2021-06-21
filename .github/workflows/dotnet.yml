@@ -27,14 +27,11 @@ jobs:
       run: dotnet build --no-restore
       working-directory: ./RestSharpQuiz
       
-    - name: Create folder
-      run: mkdir Reports
-      
     - name: Test
-      run: dotnet test --no-build --verbosity normal --settings:quizHeroku.runsettings > index.html
+      run: dotnet test --no-build --verbosity normal --settings:quizHeroku.runsettings
       
     - name: Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: asset
-        path: Reports
+        path: ./RestSharpQuiz
