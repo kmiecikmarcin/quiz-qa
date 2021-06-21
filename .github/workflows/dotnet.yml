@@ -29,11 +29,3 @@ jobs:
       
     - name: Test
       run: dotnet test --no-build --verbosity normal --settings:quizHeroku.runsettings
-
-    - name: use this action, test solution dir
-      uses: zyborg/dotnet-tests-report@v1 
-      with:
-        msbuild_configuration: quizHeroku.runsettings
-        project_path: ./RestSharpQuiz
-        report_name: my_project_tests
-        report_title: RestSharpQuiz Tests
