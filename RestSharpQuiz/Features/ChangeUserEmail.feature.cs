@@ -121,7 +121,7 @@ this.FeatureBackground();
  testRunner.When("Request sends to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.Then("The server should return status 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The server should return status 200 on success", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 10
  testRunner.And("Response with a new token", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");

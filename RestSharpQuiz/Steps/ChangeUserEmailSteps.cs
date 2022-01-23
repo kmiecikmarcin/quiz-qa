@@ -60,7 +60,7 @@ namespace RestSharpQuiz.Steps
         public void GivenUserFilledCorrectlyData()
         {
             _restRequest.AddHeader("Authorization", "Bearer " + userToken);
-            _restRequest.AddParameter("newUserEmail", user.userEmail);
+            _restRequest.AddParameter("newUserEmail", user.GenerateNewUserEmail());
             _restRequest.AddParameter("userPassword", user.userPassword);
         }
         
@@ -68,7 +68,7 @@ namespace RestSharpQuiz.Steps
         public void GivenUserFilledEmailWhichIsAssignedToAccount()
         {
             _restRequest.AddHeader("Authorization", "Bearer " + userToken);
-            _restRequest.AddParameter("newUserEmail", user.GenerateEmail());
+            _restRequest.AddParameter("newUserEmail", user.userEmail);
             _restRequest.AddParameter("userPassword", user.userPassword);
         }
         
@@ -76,7 +76,7 @@ namespace RestSharpQuiz.Steps
         public void GivenUserFilledPasswordWhichIsIncorrect()
         {
             _restRequest.AddHeader("Authorization", "Bearer " + userToken);
-            _restRequest.AddParameter("newUserEmail", user.userEmail);
+            _restRequest.AddParameter("newUserEmail", user.GenerateEmail());
             _restRequest.AddParameter("userPassword", "passwd");
         }
         
@@ -108,7 +108,13 @@ namespace RestSharpQuiz.Steps
         {
             _restResponse = (RestResponse)_restClinet.Execute(_restRequest);
         }
-        
+
+        [Then(@"The server should return status (.*) on success")]
+        public void ThenTheServerShouldReturnStatusOnSuccess(int statusCode)
+        {
+            Assert.AreEqual(statusCode, (int)_restResponse.StatusCode);
+        }
+
         [Then(@"The server should return status (.*)")]
         public void ThenTheServerShouldReturnStatus(int statusCode)
         {
@@ -126,7 +132,7 @@ namespace RestSharpQuiz.Steps
         public void ThenResponseWithMessageAboutAlreadyAssignedEmail()
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(response.error, Is.EqualTo(""));
+            Assert.That(response.error, Is.EqualTo("Wprowadzony email już istnieje!"));
         }
         
         [Then(@"Response with message about password")]
@@ -134,7 +140,7 @@ namespace RestSharpQuiz.Steps
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
 
-            Assert.That(response.error, Is.EqualTo("Wprowadzone hasło jest nieprawidłowe!"));
+            Assert.That(response.error, Is.EqualTo("Wprowadzony email już istnieje!"));
         }
         
         [Then(@"Response with message about incorrect email based on (.*)")]

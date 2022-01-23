@@ -9,6 +9,7 @@ namespace RestSharpQuiz.Models
         public string confirmPassword { get; set; }
         public string userGender { get; set; }
         public Nullable<bool> userVerification { get; set; }
+        public string newUserEmail { get; set; }
 
         public User(string userEmail, string userPassword, string confirmPassword, string userGender, Nullable<bool> userVerification)
         {
@@ -23,9 +24,18 @@ namespace RestSharpQuiz.Models
         {
             Random rand = new Random();
 
-            userEmail = $"exampleEmail{rand.Next(0, 10000)}@email.com";
+            userEmail = $"exampleEmail{rand.Next(0, 100000)}@email.com";
 
             return userEmail;
+        }
+
+        public string GenerateNewUserEmail()
+        {
+            Random rand = new Random();
+
+            newUserEmail = $"newEmail{rand.Next(0, 100000)}@email.com";
+
+            return newUserEmail;
         }
 
         public string GeneratePassword()

@@ -6,7 +6,7 @@ Background:
 Scenario: CHANGE_USER_EMAIL_[/quiz/users/email]_[PATCH]_1_send_request_with_correct_email_and_password
 	Given User filled correctly data
 	When Request sends to API 
-	Then The server should return status 200
+	Then The server should return status 200 on success
 	And Response with a new token
 
 Scenario: CHANGE_USER_EMAIL_[/quiz/users/email]_[PATCH]_2_send_request_with_email_which_is_assigned_to_account
