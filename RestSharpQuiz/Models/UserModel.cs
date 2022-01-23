@@ -4,23 +4,18 @@ namespace RestSharpQuiz.Models
 {
     public class Response
     {
-        public Message messages { get; set; }
-        public List<ValidationErrors> validationErrors { get; set; }
-    }
-
-    public class Message
-    {
         public string message { get; set; }
         public string error { get; set; }
         public string token { get; set; }
+        public List<ValidationError> validationError { get; set; }
     }
 
-    public class ValidationErrors
+    public class ValidationError
     {
-        public string user_email { get; set; }
-        public string user_password { get; set; }
-        public string confirm_password { get; set; }
-        public string user_gender { get; set; }
-        public string user_verification { get; set; }
+        public string userEmail { get; set; }
+        public string userPassword { get; set; }
+        public string confirmPassword { get; set; }
+        public string userGender { get; set; }
+        public string userVerification { get; set; }
     }
 }

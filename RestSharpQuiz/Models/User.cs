@@ -4,37 +4,37 @@ namespace RestSharpQuiz.Models
 {
     public class User
     {
-        public string user_email { get; set; }
-        public string user_password { get; set; }
-        public string confirm_password { get; set; }
-        public string user_gender { get; set; }
-        public Nullable<bool> user_verification { get; set; }
+        public string userEmail { get; set; }
+        public string userPassword { get; set; }
+        public string confirmPassword { get; set; }
+        public string userGender { get; set; }
+        public Nullable<bool> userVerification { get; set; }
 
-        public User(string user_email, string user_password, string confirm_password, string user_gender, Nullable<bool> user_verification)
+        public User(string userEmail, string userPassword, string confirmPassword, string userGender, Nullable<bool> userVerification)
         {
-            this.user_email = user_email;
-            this.user_password = user_password;
-            this.confirm_password = confirm_password;
-            this.user_gender = user_gender;
-            this.user_verification = user_verification;
+            this.userEmail = userEmail;
+            this.userPassword = userPassword;
+            this.confirmPassword = confirmPassword;
+            this.userGender = userGender;
+            this.userVerification = userVerification;
         }
 
         public string GenerateEmail()
         {
             Random rand = new Random();
 
-            user_email = $"exampleEmail{rand.Next(0, 10000)}@email.com";
+            userEmail = $"exampleEmail{rand.Next(0, 10000)}@email.com";
 
-            return user_email;
+            return userEmail;
         }
 
         public string GeneratePassword()
         {
             Random rand = new Random();
 
-            user_password = $"userPassword{rand.Next(0, 100)}@";
+            userPassword = $"userPassword{rand.Next(0, 100)}@";
 
-            return user_password;
+            return userPassword;
         }
 
         public string GenerateGender()
@@ -43,25 +43,23 @@ namespace RestSharpQuiz.Models
             string[] arrayofGender = { "Mężczyzna", "Kobieta", "Inna" };
             int randomNumber = rand.Next(0, 2);
 
-            return user_gender = arrayofGender[randomNumber];
+            return userGender = arrayofGender[randomNumber];
         }
 
         public User CreateUser(User user)
         {
-            if (user.user_email == null)
-                user.user_email = GenerateEmail();
-            if (user.user_password == null)
-                user.user_password = GeneratePassword();
-            if (user.confirm_password == null)
-                user.confirm_password = user_password;
-            if (user.user_gender == null)
-                user.user_gender = GenerateGender();
-            if (user.user_verification == false)
-                user.user_verification = true;
+            if (user.userEmail == null)
+                user.userEmail = GenerateEmail();
+            if (user.userPassword == null)
+                user.userPassword = GeneratePassword();
+            if (user.confirmPassword == null)
+                user.confirmPassword = userPassword;
+            if (user.userGender == null)
+                user.userGender = GenerateGender();
+            if (user.userVerification == false)
+                user.userVerification = true;
 
-            user = new User(user_email, user_password, confirm_password, user_gender, user_verification);
-
-            return user;
+            return new User(userEmail, userPassword, confirmPassword, userGender, userVerification);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace RestSharpQuiz.Steps
             RestClient restClinet = new RestClient();
 
             if (string.IsNullOrEmpty(envUrl))
-                envUrl = "https://localhost:3000/quiz";
+                envUrl = "https://learnandtest.herokuapp.com/quiz";
 
             RestRequest restRequest = new RestRequest(envUrl + "/users/register", Method.POST);
             user = user.CreateUser(user);
@@ -42,53 +42,53 @@ namespace RestSharpQuiz.Steps
         [Given(@"User filled email and password correctly")]
         public void GivenUserFilledEmailAndPasswordCorrectly()
         {
-            _restRequest.AddParameter("user_email", user.user_email);
-            _restRequest.AddParameter("user_password", user.user_password);
+            _restRequest.AddParameter("userEmail", user.userEmail);
+            _restRequest.AddParameter("userPassword", user.userPassword);
         }
 
         [Given(@"User didn't fill email and password")]
         public void GivenUserDidnTFillEmailAndPassword()
         {
-            _restRequest.AddParameter("user_email", "");
-            _restRequest.AddParameter("user_password", "");
+            _restRequest.AddParameter("userEmail", "");
+            _restRequest.AddParameter("userPassword", "");
         }
 
         [Given(@"User fills incorrect Adres email")]
         public void GivenUserFillsIncorrectAdresEmail()
         {
-            _restRequest.AddParameter("user_email", "incorrectEmail");
-            _restRequest.AddParameter("user_password", user.user_password);
+            _restRequest.AddParameter("userEmail", "incorrectEmail");
+            _restRequest.AddParameter("userPassword", user.userPassword);
         }
 
         [Given(@"User fills incorrect Hasło")]
         public void GivenUserFillsIncorrectHaslo()
         {
-            _restRequest.AddParameter("user_email", user.user_email);
-            _restRequest.AddParameter("user_password", "incorrectPassword");
+            _restRequest.AddParameter("userEmail", user.userEmail);
+            _restRequest.AddParameter("userPassword", "incorrectPassword");
         }
 
         [Given(@"User filled too short password")]
         public void GivenUserFilledTooShortPassword()
         {
-            _restRequest.AddParameter("user_email", user.user_email);
-            _restRequest.AddParameter("user_password", "bad@");
+            _restRequest.AddParameter("userEmail", user.userEmail);
+            _restRequest.AddParameter("userPassword", "bad@");
         }
 
         [Given(@"User filled too long Adres email")]
         public void GivenUserFilledTooLongAdresEmail()
         {
-            _restRequest.AddParameter("user_email", "xv5XfZ1LXURRkaFvIEvzp7j8Fuj16dziBW9Pv8quGJsdQfOnyKV6hosAlndp2Au244" +
+            _restRequest.AddParameter("userEmail", "xv5XfZ1LXURRkaFvIEvzp7j8Fuj16dziBW9Pv8quGJsdQfOnyKV6hosAlndp2Au244" +
                 "iHlJeHIaQHx2rqzcpyiwjqDywrzFz6CgCvUVVVngr2IkTfDQBsB88llpJYJWY2xbOdvLIBXQ2QOM65PlCBp0" +
                 "TTVQX0lBvFLIAZg7kZNM2hQIN3bpvQ2GaacERotQuF3JPwlvUUr84B9h81Y4z0MmP1hrz1bDaoAzlU5j" +
                 "Jx3ft9dCJLXUMUgig4rDDOv@email.com");
-            _restRequest.AddParameter("user_password", user.user_password);
+            _restRequest.AddParameter("userPassword", user.userPassword);
         }
 
         [Given(@"User filled too long Hasło")]
         public void GivenUserFilledTooLongHaslo()
         {
-            _restRequest.AddParameter("user_email", user.user_email);
-            _restRequest.AddParameter("user_password", "tooLongWrongPasswordWith32Letters");
+            _restRequest.AddParameter("userEmail", user.userEmail);
+            _restRequest.AddParameter("userPassword", "tooLongWrongPasswordWith32Letters");
         }
 
         [When(@"Request sends to API")]
@@ -107,50 +107,50 @@ namespace RestSharpQuiz.Steps
         public void ThenResponseShouldReturnToken()
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(response.messages.token, Is.Not.Null);
+            Assert.That(response.token, Is.Not.Null);
         }
 
         [Then(@"Response with error about missing data")]
         public void ThenResponseWithErrorAboutMissingData()
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(response.validationErrors[0].user_email, Is.EqualTo("Adres e-mail został wprowadzony niepoprawnie!"));
-            Assert.That(response.validationErrors[1].user_password, Is.EqualTo("Hasło jest za krótkie!"));
+            Assert.That(response.validationError[0].userEmail, Is.EqualTo("Adres e-mail został wprowadzony niepoprawnie!"));
+            Assert.That(response.validationError[1].userPassword, Is.EqualTo("Hasło jest za krótkie!"));
         }
 
         [Then(@"Response with error about incorrect Adres email")]
         public void ThenResponseWithErrorAboutIncorrectAdresEmail()
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(response.validationErrors[0].user_email, Is.EqualTo("Adres e-mail został wprowadzony niepoprawnie!"));
+            Assert.That(response.validationError[0].userEmail, Is.EqualTo("Adres e-mail został wprowadzony niepoprawnie!"));
         }
 
         [Then(@"Response with error about incorrect Hasło")]
         public void ThenResponseWithErrorAboutIncorrectHaslo()
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(response.messages.error, Is.EqualTo("Nie udało się zalogować!"));
+            Assert.That(response.error, Is.EqualTo("Hasło jest nieprawidłowe!"));
         }
 
         [Then(@"Response with error about too short password")]
         public void ThenResponseWithErrorAboutTooShortPassword()
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(response.validationErrors[0].user_password, Is.EqualTo("Hasło jest za krótkie!"));
+            Assert.That(response.validationError[0].userPassword, Is.EqualTo("Hasło jest za krótkie!"));
         }
 
         [Then(@"Response with error about too long Adres email")]
         public void ThenResponseWithErrorAboutTooLongAdresEmail()
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(response.validationErrors[0].user_email, Is.EqualTo("Wprowadzony adres e-mail jest za długi!"));
+            Assert.That(response.validationError[0].userEmail, Is.EqualTo("Wprowadzony adres e-mail jest za długi!"));
         }
 
         [Then(@"Response with error about too long Hasło")]
         public void ThenResponseWithErrorAboutTooLongHaslo()
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(response.validationErrors[0].user_password, Is.EqualTo("Hasło jest za długie!"));
+            Assert.That(response.validationError[0].userPassword, Is.EqualTo("Hasło jest za długie!"));
         }
     }
 }
