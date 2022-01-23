@@ -1,7 +1,7 @@
 ﻿Feature: Login module
 
 Background: 
-	Given Given User registers in system
+	Given User registers in system
 
 Scenario: LOGIN_MODULE_[/quiz/users/login]_[POST]_1_send request_with_correctly_data
 	Given User filled email and password correctly

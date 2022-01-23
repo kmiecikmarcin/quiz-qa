@@ -78,7 +78,7 @@ namespace RestSharpQuiz.Features
 #line 3
 #line hidden
 #line 4
- testRunner.Given("Given User registers in system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("User registers in system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
         

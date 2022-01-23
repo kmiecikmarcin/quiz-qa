@@ -17,5 +17,7 @@ namespace RestSharpQuiz.Models
         public string confirmPassword { get; set; }
         public string userGender { get; set; }
         public string userVerification { get; set; }
+
+        public string newUserEmail { get; set; }
     }
 }

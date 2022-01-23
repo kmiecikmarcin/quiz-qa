@@ -25,10 +25,11 @@ namespace RestSharpQuiz.Steps
             user = new User(null, null, null, null, false);
         }
 
-        [Given(@"Given User registers in system")]
+        [Given(@"User registers in system")]
         public void GivenGivenUserRegistersInSystem()
         {
             RestClient restClinet = new RestClient();
+            RestResponse restResponse = new RestResponse(); 
 
             if (string.IsNullOrEmpty(envUrl))
                 envUrl = "https://learnandtest.herokuapp.com/quiz";
@@ -36,7 +37,8 @@ namespace RestSharpQuiz.Steps
             RestRequest restRequest = new RestRequest(envUrl + "/users/register", Method.POST);
             user = user.CreateUser(user);
             restRequest.AddParameter("application/json", JsonConvert.SerializeObject(user), ParameterType.RequestBody);
-            restClinet.Execute(restRequest);
+            restResponse = (RestResponse)_restClinet.Execute(restRequest);
+            Assert.AreEqual(200, (int)restResponse.StatusCode);
         }
 
         [Given(@"User filled email and password correctly")]
