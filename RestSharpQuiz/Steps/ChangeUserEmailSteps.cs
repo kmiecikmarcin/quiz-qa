@@ -140,7 +140,7 @@ namespace RestSharpQuiz.Steps
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
 
-            Assert.That(response.error, Is.EqualTo("Wprowadzony email już istnieje!"));
+            Assert.That(response.error, Is.EqualTo("Wprowadzone hasło jest nieprawidłowe!"));
         }
         
         [Then(@"Response with message about incorrect email based on (.*)")]
