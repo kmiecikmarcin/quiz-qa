@@ -147,7 +147,7 @@ namespace RestSharpQuiz.Steps
         public void ThenResponseWithMessageAboutIncorrectEmail(string typeOfMistake)
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            if (typeOfMistake != "too long") Assert.That(response.validationError[0].newUserEmail, Is.EqualTo("Adres e-mail został wprowadzony niepoprawnie!"));
+            if (typeOfMistake != "'too long'") Assert.That(response.validationError[0].newUserEmail, Is.EqualTo("Adres e-mail został wprowadzony niepoprawnie!"));
             else
             {
                 Assert.That(response.validationError[0].newUserEmail, Is.EqualTo("Wprowadzony adres e-mail jest za długi!"));
@@ -158,7 +158,7 @@ namespace RestSharpQuiz.Steps
         public void ThenResponseWithMessageAboutIncorrectPassword(string typeOfMistake)
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            if(typeOfMistake == "which is too short" || typeOfMistake == "empty") Assert.That(response.validationError[0].userPassword, Is.EqualTo("Hasło jest za krótkie!"));
+            if(typeOfMistake == "'which is too short'" || typeOfMistake == "'empty'") Assert.That(response.validationError[0].userPassword, Is.EqualTo("Hasło jest za krótkie!"));
             else if (typeOfMistake == "'which is too long'") Assert.That(response.validationError[0].userPassword, Is.EqualTo("Hasło jest za długie!"));
         }
 

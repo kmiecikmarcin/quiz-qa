@@ -72,9 +72,9 @@ namespace RestSharpQuiz.Steps
         }
 
         [Then(@"The server should return status (.*) on success")]
-        public void ThenTheServerShouldReturnStatusOnSuccess(int statusCode)
+        public void ThenTheServerShouldReturnStatusOnSuccess()
         {
-            Assert.AreEqual(statusCode, (int)_restResponse.StatusCode);
+            Assert.AreEqual(200, (int)_restResponse.StatusCode);
         }
 
         [Then(@"Response with a new token")]
@@ -94,9 +94,9 @@ namespace RestSharpQuiz.Steps
         }
 
         [Then(@"The server should return status (.*)")]
-        public void ThenTheServerShouldReturnStatus(int statusCode)
+        public void ThenTheServerShouldReturnStatus()
         {
-            Assert.AreEqual(statusCode, (int)_restResponse.StatusCode);
+            Assert.AreEqual(400, (int)_restResponse.StatusCode);
         }
 
         [Then(@"Response with error message about missing data")]
@@ -104,7 +104,7 @@ namespace RestSharpQuiz.Steps
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
             Assert.That(response.validationError[0].newUserPassword, Is.EqualTo("Hasło jest za krótkie!"));
-            Assert.That(response.validationError[1].confirmNewUserPassword, Is.EqualTo("Hasła są różne!"));
+            Assert.That(response.validationError[1].confirmNewUserPassword, Is.EqualTo("Wartość jest pusta!"));
             Assert.That(response.validationError[2].userPassword, Is.EqualTo("Hasło jest za krótkie!"));
         }
 

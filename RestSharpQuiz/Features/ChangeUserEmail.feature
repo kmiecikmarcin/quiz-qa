@@ -25,7 +25,7 @@ Scenario Outline: CHANGE_USER_EMAIL_[/quiz/users/email]_[PATCH]_4_send_request_w
 	Given User filled email '<type of mistake>' with '<data>'
 	When Request sends to API 
 	Then The server should return status 400
-	And Response with message about incorrect email based on <type of mistake>
+	And Response with message about incorrect email based on '<type of mistake>'
 
 Examples: 
 | type of mistake      | data                                                                                                                                                                                                                                                                    |
@@ -38,7 +38,7 @@ Scenario Outline: CHANGE_USER_EMAIL_[/quiz/users/email]_[PATCH]_5_send_request_w
 	Given User filled password '<type of mistake>' with '<data>'
 	When Request sends to API 
 	Then The server should return status 400
-	And Response with message about incorrect password based on <type of mistake>
+	And Response with message about incorrect password based on '<type of mistake>'
 
 Examples: 
 | type of mistake       | data                                    |
