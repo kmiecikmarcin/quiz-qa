@@ -81,7 +81,7 @@ namespace RestSharpQuiz.Steps
         }
         
         [Given(@"User filled email '(.*)' with '(.*)'")]
-        public void GivenUserFilledEmailWith(string kindOfMistake, string data)
+        public void GivenUserFilledEmailWith(string typeOfMistake, string data)
         {
             _restRequest.AddHeader("Authorization", "Bearer " + userToken);
             _restRequest.AddParameter("newUserEmail", data);
@@ -89,7 +89,7 @@ namespace RestSharpQuiz.Steps
         }
         
         [Given(@"User filled password '(.*)' with '(.*)'")]
-        public void GivenUserFilledPasswordWith(string kindOfMistake, string data)
+        public void GivenUserFilledPasswordWith(string typeOfMistake, string data)
         {
             _restRequest.AddHeader("Authorization", "Bearer " + userToken);
             _restRequest.AddParameter("newUserEmail", user.userEmail);
@@ -144,10 +144,10 @@ namespace RestSharpQuiz.Steps
         }
         
         [Then(@"Response with message about incorrect email based on (.*)")]
-        public void ThenResponseWithMessageAboutIncorrectEmail(string kindOfMistake)
+        public void ThenResponseWithMessageAboutIncorrectEmail(string typeOfMistake)
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            if (kindOfMistake != "too long") Assert.That(response.validationError[0].newUserEmail, Is.EqualTo("Adres e-mail został wprowadzony niepoprawnie!"));
+            if (typeOfMistake != "'too long'") Assert.That(response.validationError[0].newUserEmail, Is.EqualTo("Adres e-mail został wprowadzony niepoprawnie!"));
             else
             {
                 Assert.That(response.validationError[0].newUserEmail, Is.EqualTo("Wprowadzony adres e-mail jest za długi!"));
@@ -155,11 +155,11 @@ namespace RestSharpQuiz.Steps
         }
         
         [Then(@"Response with message about incorrect password based on (.*)")]
-        public void ThenResponseWithMessageAboutIncorrectPassword(string kindOfMistake)
+        public void ThenResponseWithMessageAboutIncorrectPassword(string typeOfMistake)
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            if(kindOfMistake == "which is too short" || kindOfMistake == "empty") Assert.That(response.validationError[0].userPassword, Is.EqualTo("Hasło jest za krótkie!"));
-            else if (kindOfMistake == "'which is too long'") Assert.That(response.validationError[0].userPassword, Is.EqualTo("Hasło jest za długie!"));
+            if(typeOfMistake == "'which is too short'" || typeOfMistake == "'empty'") Assert.That(response.validationError[0].userPassword, Is.EqualTo("Hasło jest za krótkie!"));
+            else if (typeOfMistake == "'which is too long'") Assert.That(response.validationError[0].userPassword, Is.EqualTo("Hasło jest za długie!"));
         }
 
         [Then(@"Response with error message about authorization")]
