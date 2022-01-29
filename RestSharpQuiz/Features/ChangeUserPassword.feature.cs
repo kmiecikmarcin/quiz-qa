@@ -78,23 +78,20 @@ namespace RestSharpQuiz.Features
 #line 3
 #line hidden
 #line 4
- testRunner.Given("User signs up in system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 5
- testRunner.And("User signs in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("User registers into system and logs in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("CHANGE_USER_PASSWORD_1_[/quiz/users/password]_[PUT]_send_request_with_correct_dat" +
-            "a")]
-        public virtual void CHANGE_USER_PASSWORD_1_QuizUsersPassword_PUT_Send_Request_With_Correct_Data()
+        [NUnit.Framework.DescriptionAttribute("CHANGE_USER_PASSWORD_[/quiz/users/password]_[PATCH]_1_send_request_with_correct_d" +
+            "ata")]
+        public virtual void CHANGE_USER_PASSWORD_QuizUsersPassword_PATCH_1_Send_Request_With_Correct_Data()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CHANGE_USER_PASSWORD_1_[/quiz/users/password]_[PUT]_send_request_with_correct_dat" +
-                    "a", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CHANGE_USER_PASSWORD_[/quiz/users/password]_[PATCH]_1_send_request_with_correct_d" +
+                    "ata", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -117,30 +114,32 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-#line 8
+#line 7
  testRunner.Given("User filled data correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 9
+#line 8
  testRunner.When("Request sends to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 9
+ testRunner.Then("The server should return status 200 on success", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 10
- testRunner.Then("The server should return status 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 11
- testRunner.And("Response with success message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Response with a new token", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("CHANGE_USER_PASSWORD_2_[/quiz/users/password]_[PUT]_send_request_with_empty_data")]
-        public virtual void CHANGE_USER_PASSWORD_2_QuizUsersPassword_PUT_Send_Request_With_Empty_Data()
+        [NUnit.Framework.DescriptionAttribute("CHANGE_USER_PASSWORD_[/quiz/users/password]_[PATCH]_2_send_request_with_empty_dat" +
+            "a")]
+        public virtual void CHANGE_USER_PASSWORD_QuizUsersPassword_PATCH_2_Send_Request_With_Empty_Data()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CHANGE_USER_PASSWORD_2_[/quiz/users/password]_[PUT]_send_request_with_empty_data", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 13
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CHANGE_USER_PASSWORD_[/quiz/users/password]_[PATCH]_2_send_request_with_empty_dat" +
+                    "a", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 12
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -163,32 +162,32 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-#line 14
+#line 13
  testRunner.Given("User didn\'t fill data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 15
+#line 14
  testRunner.When("Request sends to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 15
+ testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 16
- testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 17
- testRunner.And("Response with message about missing data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Response with error message about missing data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("CHANGE_USER_PASSWORD_3_[/quiz/users/password]_[PUT]_send_request_with_password_wh" +
-            "ich_is_not_assigned_to_account")]
-        public virtual void CHANGE_USER_PASSWORD_3_QuizUsersPassword_PUT_Send_Request_With_Password_Which_Is_Not_Assigned_To_Account()
+        [NUnit.Framework.DescriptionAttribute("CHANGE_USER_PASSWORD_[/quiz/users/password]_[PATCH]_3_send_request_with_password_" +
+            "which_is_not_assigned_to_account")]
+        public virtual void CHANGE_USER_PASSWORD_QuizUsersPassword_PATCH_3_Send_Request_With_Password_Which_Is_Not_Assigned_To_Account()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CHANGE_USER_PASSWORD_3_[/quiz/users/password]_[PUT]_send_request_with_password_wh" +
-                    "ich_is_not_assigned_to_account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 19
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CHANGE_USER_PASSWORD_[/quiz/users/password]_[PATCH]_3_send_request_with_password_" +
+                    "which_is_not_assigned_to_account", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 18
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -210,40 +209,39 @@ this.ScenarioInitialize(scenarioInfo);
                 this.ScenarioStart();
 #line 3
 this.FeatureBackground();
+#line hidden
+#line 19
+ testRunner.Given("User filled password which is not assigned to account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 20
- testRunner.Given("User filled password which is incorrect", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 21
  testRunner.When("Request sends to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 22
+#line 21
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 23
- testRunner.And("Response with message about password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 22
+ testRunner.And("Response with error message about wrong password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("CHANGE_USER_PASSWORD_4_[/quiz/users/password]_[PUT]_send_request_with_incorrect_n" +
-            "ew_password")]
-        [NUnit.Framework.TestCaseAttribute("which is too short", "short", null)]
-        [NUnit.Framework.TestCaseAttribute("which is too long", "userEnteredTooLongPassword@WhichIsWrong", null)]
+        [NUnit.Framework.DescriptionAttribute("CHANGE_USER_PASSWORD_[/quiz/users/password]_[PATCH]_4_send_request_with_incorrect" +
+            "_new_password")]
+        [NUnit.Framework.TestCaseAttribute("too short", "short", null)]
+        [NUnit.Framework.TestCaseAttribute("too long", "userEnteredTooLongPassword@WhichIsWrong", null)]
         [NUnit.Framework.TestCaseAttribute("without data", "empty", null)]
         [NUnit.Framework.TestCaseAttribute("without special key", "password", null)]
-        [NUnit.Framework.TestCaseAttribute("which is not a string", "int", null)]
-        public virtual void CHANGE_USER_PASSWORD_4_QuizUsersPassword_PUT_Send_Request_With_Incorrect_New_Password(string typeOfMistake, string data, string[] exampleTags)
+        public virtual void CHANGE_USER_PASSWORD_QuizUsersPassword_PATCH_4_Send_Request_With_Incorrect_New_Password(string typeOfMistake, string data, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("type of mistake", typeOfMistake);
             argumentsOfScenario.Add("data", data);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CHANGE_USER_PASSWORD_4_[/quiz/users/password]_[PUT]_send_request_with_incorrect_n" +
-                    "ew_password", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 25
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CHANGE_USER_PASSWORD_[/quiz/users/password]_[PATCH]_4_send_request_with_incorrect" +
+                    "_new_password", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 24
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -266,32 +264,32 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-#line 26
+#line 25
  testRunner.Given(string.Format("User filled new password \'{0}\' with \'{1}\'", typeOfMistake, data), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 27
+#line 26
  testRunner.When("Request sends to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 28
+#line 27
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 29
- testRunner.And("Response with message about incorrect new password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 28
+ testRunner.And(string.Format("Response with error message about incorrect the new password based on \'{0}\'", typeOfMistake), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("CHANGE_USER_PASSWORD_5_[/quiz/users/password]_[PUT]_send_request_with_confirm_pas" +
-            "sword_which_is_different_from_password")]
-        public virtual void CHANGE_USER_PASSWORD_5_QuizUsersPassword_PUT_Send_Request_With_Confirm_Password_Which_Is_Different_From_Password()
+        [NUnit.Framework.DescriptionAttribute("CHANGE_USER_PASSWORD_[/quiz/users/password]_[PATCH]_5_send_request_with_confirm_p" +
+            "assword_which_is_different_from_password")]
+        public virtual void CHANGE_USER_PASSWORD_QuizUsersPassword_PATCH_5_Send_Request_With_Confirm_Password_Which_Is_Different_From_Password()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CHANGE_USER_PASSWORD_5_[/quiz/users/password]_[PUT]_send_request_with_confirm_pas" +
-                    "sword_which_is_different_from_password", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 39
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CHANGE_USER_PASSWORD_[/quiz/users/password]_[PATCH]_5_send_request_with_confirm_p" +
+                    "assword_which_is_different_from_password", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 37
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -314,39 +312,38 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-#line 40
- testRunner.Given("User filled confirm password incorrect", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 38
+ testRunner.Given("User filled confirm password field incorrect", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 41
+#line 39
  testRunner.When("Request sends to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 42
+#line 40
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 43
- testRunner.And("Response with message about confirm password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 41
+ testRunner.And("Response with error message about wrong confirmation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("CHANGE_OF_USER_PASSWORD_6_[/quiz/users/password]_[PUT]_send_request_with_incorrec" +
-            "t_password")]
-        [NUnit.Framework.TestCaseAttribute("which is too short", "short", null)]
-        [NUnit.Framework.TestCaseAttribute("which is too long", "userEnteredTooLongPassword@WhichIsWrong", null)]
+        [NUnit.Framework.DescriptionAttribute("CHANGE_USER_PASSWORD_[/quiz/users/password]_[PATCH]_6_send_request_with_incorrect" +
+            "_password")]
+        [NUnit.Framework.TestCaseAttribute("too short", "short", null)]
+        [NUnit.Framework.TestCaseAttribute("too long", "userEnteredTooLongPassword@WhichIsWrong", null)]
         [NUnit.Framework.TestCaseAttribute("without data", "empty", null)]
         [NUnit.Framework.TestCaseAttribute("without special key", "password", null)]
-        [NUnit.Framework.TestCaseAttribute("which is not a string", "float", null)]
-        public virtual void CHANGE_OF_USER_PASSWORD_6_QuizUsersPassword_PUT_Send_Request_With_Incorrect_Password(string typeOfMistake, string data, string[] exampleTags)
+        public virtual void CHANGE_USER_PASSWORD_QuizUsersPassword_PATCH_6_Send_Request_With_Incorrect_Password(string typeOfMistake, string data, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("type of mistake", typeOfMistake);
             argumentsOfScenario.Add("data", data);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CHANGE_OF_USER_PASSWORD_6_[/quiz/users/password]_[PUT]_send_request_with_incorrec" +
-                    "t_password", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 46
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CHANGE_USER_PASSWORD_[/quiz/users/password]_[PATCH]_6_send_request_with_incorrect" +
+                    "_password", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 44
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -369,17 +366,17 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-#line 47
+#line 45
  testRunner.Given(string.Format("User filled password \'{0}\' with \'{1}\'", typeOfMistake, data), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 48
+#line 46
  testRunner.When("Request sends to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 49
+#line 47
  testRunner.Then("The server should return status 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 50
- testRunner.And("Response with message about incorrect password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 48
+ testRunner.And(string.Format("Response with error message about incorrect password based on \'{0}\'", typeOfMistake), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
