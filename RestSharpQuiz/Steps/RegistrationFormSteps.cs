@@ -219,7 +219,7 @@ namespace RestSharpQuiz.Steps
         public void ThenResponseWithErrorAboutEmptyPowtorzHaslo()
         {
             response = JsonConvert.DeserializeObject<Response>(_restResponse.Content);
-            Assert.That(response.validationError[0].confirmPassword, Is.EqualTo("Hasła sa różne!"));
+            Assert.That(response.validationError[0].confirmPassword, Is.EqualTo("Hasła są różne!"));
         }
 
         [Then(@"Response with error about empty Płeć")]
